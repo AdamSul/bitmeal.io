@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>BitMeal · Email Signature Generator</title>
+
+	<script type="module">
+		document.documentElement.classList.remove('no-js');
+		document.documentElement.classList.add('js');
+	</script>
+
+	<link href="../assets/css/email-signatures.css" rel="stylesheet" type="text/css">
+
+	<link href="../bitmeal_monogram_favicon.png" rel="shortcut icon" type="image/x-icon"/>
+	<link rel="icon" href="/bitmeal_monogram_favicon.svg" type="image/svg+xml">
+	<link href="../bitmeal_monogram_touch-icon.png" rel="apple-touch-icon"/>
+
+	<meta name="robots" content="noindex,nofollow">
+</head>
+<body>
+	<main id="app">
+		<h1>BitMeal email signatures</h1>
+		<ol>
+			<li>Enter your information in the form below.</li>
+			<li>
+				Highlight the signature at the bottom of the page and copy.<br>
+				<ul style="list-style: disc">
+					<li>Mac users: Press <b>Command + C</b></li>
+					<li>PC users: Press <b>CTRL + C</b></li>
+				</ul>
+				<img width="172" style="margin:0.5em 0 0 -2em" src="../assets/img/bitmeal_email-signature_highlight.png" alt="A highlighted signature">
+			</li>
+			<li>Follow the instructions for your email client, listed on <a target="_blank" href="https://codepen.io/jlwarner/live/802990ba7640779519725905718775bb">this page.</a></li>
+		</ol>
+		<hr/>
+		<form>
+			<h2>User information</h2>
+			<label>
+				Name
+				<input v-model="user.name" name="user.name" type="text" placeholder="Full Name">
+			</label>
+			<label>
+				Job Title
+				<input v-model="user.title" name="user.title" type="text" placeholder="Job Title">
+			</label>
+			<label>
+				Phone
+				<input v-model="user.phone" name="user.phone" type="tel" placeholder="XXX-XXX-XXXX">
+			</label>
+			<label>
+				Email
+				<input v-model="user.email" name="user.email" type="email" placeholder="name@bitmeal.com">
+			</label>
+			<label>
+				Signature
+				<select v-model="user.signature">
+					<option>Monogram</option>
+					<option>Logotype</option>
+				  </select>
+			</label>
+		</form>
+		<hr style="margin-bottom:3em;"/>
+		
+		<table v-if="user.signature=='Monogram'" style="color:black;font-weight:normal;font:400 12px/1.333 -apple-system,BlinkMacSystemFont,Roboto,Bahnschrift,'Helvetica Neue',Helvetica,Noto,Arial,sans-serif;">
+			<tr>
+				<td style="vertical-align:top;padding-right:8px">
+					<a href="https://bitmeal.com" target="_blank">
+						<img width="50" height="58" src="../assets/img/bitmeal_email-signature_monogram.png" alt="BitMeal">
+					</a>
+				</td>
+				<td style="vertical-align:top;">
+					<p style="margin:-2.5px 0 0;font-weight:bold;font-weight:700;font-weight:500;font-size:16px;line-height:1;">{{ user.name }}</p>
+					<p style="margin:0 0 16px">{{ user.title }}</p>
+					<p style="margin:0">
+						<a style="text-decoration:none;color:black" v-bind:href="'mailto:' + user.email">{{ user.email }}</a>
+					</p>
+					<p style="margin:0">
+						<a style="text-decoration:none;color:black" v-bind:href="'tel:+1' + user.phone.replace(/\-/g, '')" target="_blank">{{ user.phone.replace(/\-/g, '&nbsp;') }}</a>
+					</p>
+				</td>
+			</tr>
+		</table>
+
+		<div dir="ltr" v-if="user.signature=='Logotype'" style="color:black;font-weight:normal;font:400 12px/1.333 -apple-system,BlinkMacSystemFont,Roboto,Bahnschrift,'Helvetica Neue',Helvetica,Noto,Arial,sans-serif;">
+			<p style="margin:-2.5px 0 0;font-weight:bold;font-weight:700;font-weight:500;font-size:16px;line-height:1;">{{ user.name }}</p>
+			<p style="margin:0 0 16px">{{ user.title }}</p>
+			<p style="margin:0">
+				<a style="text-decoration:none;color:black" v-bind:href="'mailto:' + user.email">{{ user.email }}</a>
+			</p>
+			<p style="margin:0 0 20px">
+				<a style="text-decoration:none;color:black" v-bind:href="'tel:+1' + user.phone.replace(/\-/g, '')" target="_blank">{{ user.phone.replace(/\-/g, '&nbsp;') }}</a>
+			</p>
+
+			<a href="https://bitmeal.com" target="_blank">
+				<img width="166" height="37" src="../assets/img/bitmeal_email-signature_logotype.png" alt="BitMeal">
+			</a>
+			<p style="margin:4px 0 0;font-size:10px;line-height:1.2;font-style:italic;">Restaurant payments and rewards <br/>with scale and speed, built on crypto</p>
+
+		</div>
+	</main>
+	<script src="https://unpkg.com/vue@2.5.17/dist/vue.min.js"></script>
+	<script>
+		const app = new Vue({
+			el: '#app',
+			data: {
+				user: {
+					name: 'First Last',
+					title: 'Job Title',
+					phone: '123-456-7890',
+					email: 'name@bitmeal.com',
+					signature: 'Monogram'
+				}
+			}
+		})
+	</script>
+</body>
+</html>
