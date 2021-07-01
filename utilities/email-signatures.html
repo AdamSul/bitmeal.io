@@ -51,7 +51,7 @@
 			</label>
 			<label>
 				Email
-				<input v-model="user.email" name="user.email" type="email" placeholder="name@bitmeal.com">
+				<input v-model="user.email" name="user.email" type="email" placeholder="name@bitmeal.io">
 			</label>
 			<label>
 				Signature
@@ -66,7 +66,7 @@
 		<table v-if="user.signature=='Monogram'" style="color:black;font-weight:normal;font:400 12px/1.333 -apple-system,BlinkMacSystemFont,Roboto,Bahnschrift,'Helvetica Neue',Helvetica,Noto,Arial,sans-serif;">
 			<tr>
 				<td style="vertical-align:top;padding-right:8px">
-					<a href="https://bitmeal.com" target="_blank">
+					<a href="https://bitmeal.io" target="_blank">
 						<img width="50" height="58" src="../assets/img/bitmeal_email-signature_monogram.png" alt="BitMeal">
 					</a>
 				</td>
@@ -93,7 +93,7 @@
 				<a style="text-decoration:none;color:black" v-bind:href="'tel:+1' + user.phone.replace(/\-/g, '')" target="_blank">{{ user.phone.replace(/\-/g, '&nbsp;') }}</a>
 			</p>
 
-			<a href="https://bitmeal.com" target="_blank">
+			<a href="https://bitmeal.io" target="_blank">
 				<img width="166" height="37" src="../assets/img/bitmeal_email-signature_logotype.png" alt="BitMeal">
 			</a>
 			<p style="margin:4px 0 0;font-size:10px;line-height:1.2;font-style:italic;">Restaurant payments and rewards <br/>with scale and speed, built on crypto</p>
@@ -109,7 +109,7 @@
 					name: 'First Last',
 					title: 'Job Title',
 					phone: '123-456-7890',
-					email: 'name@bitmeal.com',
+					email: 'name@bitmeal.io',
 					signature: 'Monogram'
 				}
 			}
